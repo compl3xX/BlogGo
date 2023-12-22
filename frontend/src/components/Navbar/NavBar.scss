@@ -1,0 +1,13 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 50px;
+  margin-right: 8rem;
+  margin-top: 2rem;
+  font-size: larger;
+
+  a {
+    text-decoration: none;
+  }
+}

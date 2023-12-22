@@ -1,10 +1,11 @@
 import React from 'react'
 import { NavLink } from "react-router-dom"
+import './NavBar.scss'
 const NavBar = () => {
     return (
-        <div>
-            <NavLink to='/'>SignUp</NavLink>
-            <NavLink to='/signIn'>SignIn</NavLink>
+        <div className="navbar">
+            <NavLink to='/'>Register</NavLink>
+            <NavLink to='/signIn'>Login</NavLink>
         </div>
     )
 }

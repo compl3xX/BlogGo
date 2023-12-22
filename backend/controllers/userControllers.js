@@ -43,7 +43,6 @@ const signIn = async (req, res) => {
         res.json('Password is incorrect')
     }
 
-    // res.send({ searchedUser, matchPassword })
 
 }
 
