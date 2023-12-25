@@ -1,0 +1,12 @@
+.text_editor {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  .quill {
+    height: 30rem;
+    padding: 2rem;
+    width: 58rem;
+  }
+}

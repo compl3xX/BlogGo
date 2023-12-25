@@ -1,0 +1,17 @@
+.post {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  padding: 2rem ;
+  gap: 10px;
+  background-color: rgb(245, 242, 242);
+}
+
+.post_text {
+  width: 80rem;
+}
+
+img {
+  max-width: 20rem;
+  height: auto;
+}

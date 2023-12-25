@@ -1,22 +1,17 @@
-const userModel = require('../models/userModel')
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-
+const userModel = require('../models/userModel')
+const { sendToken } = require('../utilis/token')
 
 
 const signUp = async (req, res) => {
 
-    const secretKey = process.env.SECRET_KEY;
-
     const { username, email, password } = req.body;
-
-    const token = jwt.sign({ username, email }, secretKey)
 
     const encryptPassword = await bcrypt.hash(password, 8)
 
-    await userModel.create({ username, email, password: encryptPassword, token })
+    const user = await userModel.create({ username, email, password: encryptPassword})
 
-    res.json(token)
+    sendToken(user, 200, res)
 
 }
 
@@ -32,11 +27,13 @@ const signIn = async (req, res) => {
 
     if (matchPassword) {
 
-        const token = jwt.sign({ username,email:searchedUser.email }, secretKey,{ expiresIn: '1h' })
+        // const token = jwt.sign({ username,email:searchedUser.email }, secretKey,{ expiresIn: '1h' })
 
-        res.cookie('token', token, { httpOnly: true})
+        // res.cookie('token', token, { httpOnly: true})
 
-        res.json("SignIn Successful")
+        // res.json("SignIn Successful")
+
+        sendToken(searchedUser, 200, res)
 
 
     } else {
