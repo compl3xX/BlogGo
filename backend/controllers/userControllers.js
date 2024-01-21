@@ -26,6 +26,8 @@ const signIn = async (req, res, next) => {
 
     const matchPassword = await bcrypt.compare(password, searchedUser.password);
 
+    console.log(matchPassword)
+
     if (matchPassword) {
         sendToken(searchedUser, 200, res)
     } else {
