@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt');
+
 const jwt = require('jsonwebtoken');
 
 const userModel = mongoose.Schema({
@@ -20,6 +22,12 @@ const userModel = mongoose.Schema({
     token: {
         type: String
     }
+})
+
+
+userModel.pre('save', function (next) {
+    this.password =  bcrypt.hash(this.password, 8)
+    next();
 })
 
 
