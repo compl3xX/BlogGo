@@ -22,7 +22,7 @@ const userModel = mongoose.Schema({
     token: {
         type: String
     }
-})
+}, { timestamps: true })
 
 
 userModel.pre('save', function (next) {

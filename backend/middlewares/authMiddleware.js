@@ -24,7 +24,6 @@ const accessCheck = asyncHandler(async (req, res, next) => {
 
     userFromDb.password = undefined
 
-
     if (!userFromDb) {
         return next(new CustomError('You are not authorized', 401))
     }
