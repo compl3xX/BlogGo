@@ -14,10 +14,10 @@ const commentModel = mongoose.Schema({
 
     },
 
-    post: {
+    parent: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'post',
-        required: true
+        ref: 'comment',
+        default: null
     },
 
     publishDate: {
