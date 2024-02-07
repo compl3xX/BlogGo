@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import api from "../../utilis/baseUrl"
+import { useNavigate } from "react-router-dom";
 import './SignUp.scss'
 import { Button } from "../../components"
 
@@ -9,11 +10,13 @@ const SignUp = () => {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const navigate = useNavigate()
 
     const registerUserHandler = () => {
 
-        api.post('/api/signUp', { username, email, password }).then(resp => {
+        api.post('/api/user/signUp', { username, email, password }).then(resp => {
             alert('User is registered Successfully')
+            navigate("/home")
             console.log("Success", resp)
         }).catch(err => {
             console.log("Error", err)

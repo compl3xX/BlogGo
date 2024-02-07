@@ -6,21 +6,20 @@ const NavBar = () => {
 
     const { pathname } = useLocation();
 
-    let hidden = false;
+    let hidden = true;
 
-
-    if (pathname === '/signup' || pathname === '/signin') hidden = true
+    if (pathname === '/signup' || pathname === '/signIn') hidden = false
 
     return (
         <div className="navbar">
             <NavLink to='/home'>
                 <h3 >BlogGo</h3>
             </NavLink>
-            <NavLink style={{ fontSize: "large" }} to='/createpost'>Create Note</NavLink>
-            {hidden && <>
+            {hidden && <NavLink style={{ fontSize: "large" }} to='/createpost'>Create Note</NavLink>}
+            {/* {hidden && <>
                 <NavLink to='/signup'>Register</NavLink>
                 <NavLink to='/signin'>Login</NavLink>
-            </>}
+            </>} */}
         </div>
     )
 }

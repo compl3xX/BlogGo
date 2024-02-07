@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Button } from "../../components"
 import { useNavigate } from "react-router-dom";
+import api from "../../utilis/baseUrl"
 import axios from 'axios'
 import './SignIn.scss'
 
@@ -19,7 +20,7 @@ const SignIn = () => {
         //send username,password and get token
         try {
 
-            const { data } = await axios.post('http://localhost:4000/api/user/signIn', { username, password })
+            const { data } = await api.post('/api/user/signIn', { username, password })
             localStorage.setItem('token', data.token)
             navigate('/home')
 
@@ -43,9 +44,9 @@ const SignIn = () => {
                     onChange={(e) => setUsername(e.target.value)}
                     value={username}
                 />
-                <input placeholder=" Enter password..."
+                <input type="password" placeholder=" Enter password..."
                     onChange={(e) => setPassword(e.target.value)}
-                    value={password }
+                    value={password}
                 />
                 <Button handel={signInHandler} BntText="Login" />
             </div>
