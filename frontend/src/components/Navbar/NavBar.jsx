@@ -8,7 +8,7 @@ const NavBar = () => {
 
     let hidden = true;
 
-    if (pathname === '/signup' || pathname === '/signIn') hidden = false
+    if (pathname === '/signup' || pathname === '/signIn' || pathname === '/createpost') hidden = false
 
     return (
         <div className="navbar">

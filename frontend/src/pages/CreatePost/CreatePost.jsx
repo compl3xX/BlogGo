@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { TextEditor } from "../../components"
 import api from '../../utilis/baseUrl'
-
+import './CreatePost.scss'
 const CreatePost = () => {
 
     const [selectedFile, setSelectedFile] = useState(null);
@@ -26,16 +26,17 @@ const CreatePost = () => {
         catch (error) {
             console.error('Error uploading file:', error);
         }
-
+        
 
     }
 
     return (
-        <>
+        <div className="text_editor_container">
+            <input className='TitleInput' placeholder=" Title" />
+            <TextEditor />
             <input type="file" onChange={handleFileChange} />
             <button onClick={uploadHandler}>Upload</button>
-            <TextEditor />
-        </>
+        </div>
     )
 }
 
