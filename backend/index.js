@@ -23,13 +23,8 @@ app.use(cookieParser())
 app.use(cors())
 
 
-app.post('/upload', uploadMiddleware, (req, res) => {
-
-  // const filename = req.uploadedFile.filename;
-
-  // const path = req.uploadedFile.path;
-
-  return res.status(200).send('File uploaded successfully.');
+app.post('/upload', uploadMiddleware, async (req, res) => {
+  return res.status(200).json(req.cldRes);
 })
 
 app.use('/api', indexRouter)

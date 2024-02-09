@@ -26,15 +26,15 @@ const CreatePost = () => {
         catch (error) {
             console.error('Error uploading file:', error);
         }
-        
+
 
     }
 
     return (
         <div className="text_editor_container">
-            <input className='TitleInput' placeholder=" Title" />
+            <input className='TitleInput' placeholder=" Title"/>
             <TextEditor />
-            <input type="file" onChange={handleFileChange} />
+            <input type="file" onChange={handleFileChange}/>
             <button onClick={uploadHandler}>Upload</button>
         </div>
     )
