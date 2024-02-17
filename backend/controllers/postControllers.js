@@ -21,7 +21,7 @@ const newPost = asyncHandler(async (req, res) => {
         title,
         content,
         author: req.user.id,
-
+        bannerImg:req.cldRes.url
     })
 
     return res.status(200).json({

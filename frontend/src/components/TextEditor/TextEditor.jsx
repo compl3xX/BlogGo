@@ -4,9 +4,8 @@ import 'react-quill/dist/quill.snow.css';
 
 import './TextEditor.scss'
 
-const TextEditor = () => {
+const TextEditor = ({ value, setValue }) => {
 
-    const [value, setValue] = useState('');
 
     const quillOptions = {
         theme: 'bubble', // Specify the theme ('snow' or 'bubble')

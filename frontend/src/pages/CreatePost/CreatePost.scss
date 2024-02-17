@@ -2,9 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .TitleInput {
   width: 54rem;
-  font-size: x-large;
+  font-size: large;
+  padding: 2px;
 }

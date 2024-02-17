@@ -26,7 +26,10 @@ const uploadToCloudinary = async (file) => {
 
 const uploadMiddleware = (req, res, next) => {
 
+
     uploads.single('image')(req, res, async (err) => {
+
+
 
         if (err) {
             return res.status(500).send('File upload failed')

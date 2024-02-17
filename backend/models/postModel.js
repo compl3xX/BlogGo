@@ -29,10 +29,15 @@ const postModel = mongoose.Schema({
     comments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'comment'
-    }]
+    }],
+
+    bannerImg: {
+        type:String,
+        require:[true,"Please provide a banner image"]
+    }
     ,
     slug: String
-},{ timestamps: true})
+}, { timestamps: true })
 
 
 postModel.pre('save', function (next) {
