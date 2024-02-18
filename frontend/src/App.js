@@ -4,10 +4,6 @@ import { CreatePost, Home, SignIn, SignUp } from "./pages";
 import { NavBar } from "./components";
 
 
-
-
-
-
 function App() {
   return (
     <div className="main_container">

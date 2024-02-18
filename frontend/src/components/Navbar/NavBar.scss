@@ -14,3 +14,17 @@
     color: black;
   }
 }
+.create {
+  border: 1px solid black;
+  font-size: large;
+  padding: 5px;
+  border-radius: 5px;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+}

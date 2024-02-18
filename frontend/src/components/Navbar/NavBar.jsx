@@ -15,7 +15,7 @@ const NavBar = () => {
             <NavLink to='/home'>
                 <h3 >BlogGo</h3>
             </NavLink>
-            {hidden && <NavLink style={{ fontSize: "large" }} to='/createpost'>Create Note</NavLink>}
+            {hidden && <NavLink className="create" to='/createpost'>Create</NavLink>}
             {/* {hidden && <>
                 <NavLink to='/signup'>Register</NavLink>
                 <NavLink to='/signin'>Login</NavLink>

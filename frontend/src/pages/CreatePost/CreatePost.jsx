@@ -16,7 +16,11 @@ const CreatePost = () => {
         console.log(event.target.files)
     };
 
-    
+    const config = {
+        "headers": {
+            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDA5ZTdjNjllNDNmNGUzNTRmYjQ5YiIsInVzZXJuYW1lIjoicmlzaHUiLCJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJpYXQiOjE3MDgyNzc3MzAsImV4cCI6MTcwODM2NDEzMH0.i-57p2_j7DgjT6FiYcEqlClbN1Xjo0jAs3NFKk0ITNg`,
+        }
+    }
 
     const submitHandler = async (e) => {
 

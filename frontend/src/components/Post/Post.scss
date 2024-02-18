@@ -2,16 +2,21 @@
   margin-top: 1rem;
   display: flex;
   flex-direction: row;
-  padding: 2rem ;
   gap: 10px;
-  background-color: rgb(245, 242, 242);
+  background-color: rgb(254, 245, 245);
+  width: 40rem;
+  height: 20rem;
 }
 
 .post_text {
-  width: 80rem;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 img {
-  max-width: 20rem;
-  height: auto;
+  width: 20rem;
+  object-fit: fill;
 }
