@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { CreatePost, Home, SignIn, SignUp } from "./pages";
 import { NavBar } from "./components";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 
 function App() {
@@ -12,7 +13,12 @@ function App() {
         <Routes>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
-          <Route path='/home' element={<Home />} />
+          <Route path='/home'
+            element={
+              <PrivateRoute>
+                <Home />
+              </PrivateRoute>}
+          />
           <Route path='/createpost' element={<CreatePost />} />
         </Routes>
       </BrowserRouter>

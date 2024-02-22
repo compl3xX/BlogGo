@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Button } from "../../components"
 import { useNavigate } from "react-router-dom";
 import api from "../../utilis/baseUrl"
-import axios from 'axios'
 import './SignIn.scss'
 
 
@@ -18,12 +17,12 @@ const SignIn = () => {
         e.preventDefault();
 
         //send username,password and get token
+
         try {
 
             const { data } = await api.post('/api/user/signIn', { username, password })
             localStorage.setItem('token', data.token)
             navigate('/home')
-
             console.log(data)
 
         }

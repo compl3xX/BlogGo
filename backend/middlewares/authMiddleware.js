@@ -27,7 +27,7 @@ const accessCheck = asyncHandler(async (req, res, next) => {
     if (!userFromDb) {
         return next(new CustomError('You are not authorized', 401))
     }
-
+    
     req.user = userFromDb
 
     next()

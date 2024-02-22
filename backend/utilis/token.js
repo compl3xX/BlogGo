@@ -9,7 +9,7 @@ const getAccessTokenFromHeader = (req) => {
 
 const sendToken = (user, statuscode, res) => {
     const token = user.generateJwt();
-    return res.status(statuscode).cookie('token', token, { httpOnly: true }).json({
+    return res.status(statuscode).json({
         success: true,
         token
     })

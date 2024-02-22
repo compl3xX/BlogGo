@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const userModel = require('../models/userModel')
 const { sendToken } = require('../utilis/token')
 const CustomError = require('../utilis/customError')
+const asyncHandler = require('express-async-handler')
 
 
 const signUp = async (req, res) => {
@@ -29,10 +30,18 @@ const signIn = async (req, res, next) => {
     if (matchPassword) {
         sendToken(searchedUser, 200, res)
     } else {
-        return next(new CustomError("Password is incorrect",404))
+        return next(new CustomError("Password is incorrect", 404))
     }
-
 
 }
 
-module.exports = { signUp, signIn }
+const userProfile = async (req, res, next) => {
+
+    return res.status(200).json({
+        success: true,
+        res: req.user
+    })
+
+}
+
+module.exports = { signUp, signIn, userProfile }
