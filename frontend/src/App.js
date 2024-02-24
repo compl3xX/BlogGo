@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { CreatePost, Home, SignIn, SignUp } from "./pages";
+import { CreatePost, Home, SignIn, SignUp, UserProfile } from "./pages";
 import { NavBar } from "./components";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
@@ -20,6 +20,7 @@ function App() {
               </PrivateRoute>}
           />
           <Route path='/createpost' element={<CreatePost />} />
+          <Route path='userprofile' element={<UserProfile />} />
         </Routes>
       </BrowserRouter>
     </div>

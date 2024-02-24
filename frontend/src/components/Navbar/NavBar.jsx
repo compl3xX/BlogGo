@@ -18,7 +18,7 @@ const NavBar = () => {
             </NavLink>
             {hidden && <div className="navbar_left">
                 <NavLink className="create" to='/createpost'>Create</NavLink>
-                <NavLink className="profile"><img src={avatar} /></NavLink>
+                <NavLink className="profile" to='/userprofile'><img src={avatar} /></NavLink>
             </div>}
             {/* {hidden && <>
                 <NavLink to='/signup'>Register</NavLink>
