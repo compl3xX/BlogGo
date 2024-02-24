@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Button } from "../../components"
 import { useNavigate } from "react-router-dom";
 import api from "../../utilis/baseUrl"
 import './SignIn.scss'
+import { AuthContext } from "../../context/AuthContext";
+
 
 
 const SignIn = () => {
@@ -12,6 +14,8 @@ const SignIn = () => {
     const [error, setError] = useState("")
     const navigate = useNavigate()
 
+    const { setActiveUser } = useContext(AuthContext)
+
     const signInHandler = async (e) => {
 
         e.preventDefault();
@@ -19,12 +23,11 @@ const SignIn = () => {
         //send username,password and get token
 
         try {
-
             const { data } = await api.post('/api/user/signIn', { username, password })
+            console.log(data.userInfo)
             localStorage.setItem('token', data.token)
+            setActiveUser(data.userInfo)
             navigate('/home')
-            console.log(data)
-
         }
         catch (err) {
             setError(err.response.data.error)

@@ -7,7 +7,6 @@ const PrivateRoute = ({ children }) => {
 
     const { activeUser } = useContext(AuthContext)
 
-    console.log(activeUser)
 
     if (JSON.stringify(activeUser) === "{}") {
         return <Navigate to="/signin" replace={true} />

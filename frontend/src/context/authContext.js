@@ -15,8 +15,7 @@ const AuthContextProvider = ({ children }) => {
         }
     })
 
-
-    const { data, isloading, isError, error } = useQuery({ queryKey: ['auth'], queryFn: () => api.get("/api/user/userprofile", config) })
+    const { data, isError, error, isFetched } = useQuery({ queryKey: ['auth'], queryFn: () => api.get("/api/user/userprofile", config) })
 
 
     useEffect(() => {

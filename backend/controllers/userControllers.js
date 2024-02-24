@@ -27,8 +27,15 @@ const signIn = async (req, res, next) => {
 
     const matchPassword = await bcrypt.compare(password, searchedUser.password);
 
+    searchedUser.password = ""
+
     if (matchPassword) {
-        sendToken(searchedUser, 200, res)
+        const token = searchedUser.generateJwt();
+        return res.status(200).json({
+            token,
+            userInfo: searchedUser
+        })
+        
     } else {
         return next(new CustomError("Password is incorrect", 404))
     }
