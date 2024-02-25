@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Button } from "../../components"
 import { useNavigate } from "react-router-dom";
 import api from "../../utilis/baseUrl"
@@ -14,7 +14,13 @@ const SignIn = () => {
     const [error, setError] = useState("")
     const navigate = useNavigate()
 
-    const { setActiveUser } = useContext(AuthContext)
+    const { activeUser, setActiveUser } = useContext(AuthContext)
+
+    useEffect(() => {
+        if (JSON.stringify(activeUser) !== "{}") navigate("/home")
+    }, [activeUser])
+
+
 
     const signInHandler = async (e) => {
 

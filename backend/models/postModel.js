@@ -51,7 +51,7 @@ postModel.pre('save', function (next) {
 postModel.methods.makeSlug = function () {
     return slugify(this.title, {
         replacement: '-',
-        remove: /[*+~.()'"!:@/?]/g,
+        remove: /[^a-zA-Z0-9]/g,
         lower: true,
         strict: false,
         locale: 'en',

@@ -1,8 +1,9 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { CreatePost, Home, SignIn, SignUp, UserProfile } from "./pages";
+import { CreatePost, DetailedPost, Home, SignIn, SignUp, UserProfile } from "./pages";
 import { NavBar } from "./components";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
               </PrivateRoute>}
           />
           <Route path='/createpost' element={<CreatePost />} />
-          <Route path='userprofile' element={<UserProfile />} />
+          <Route path='/userprofile' element={<UserProfile />} />
+          <Route path='/post/:id' element={<DetailedPost />} />
         </Routes>
       </BrowserRouter>
     </div>

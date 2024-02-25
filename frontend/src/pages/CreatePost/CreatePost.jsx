@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { TextEditor } from "../../components"
 import api from '../../utilis/baseUrl'
 import './CreatePost.scss'
+import { AuthContext } from "../../context/AuthContext"
+
 const CreatePost = () => {
 
     const [selectedFile, setSelectedFile] = useState(null);
@@ -16,9 +18,16 @@ const CreatePost = () => {
         console.log(event.target.files)
     };
 
+
+    const { activeUser } = useContext(AuthContext)
+
+    let token = "";
+
+    if (JSON.stringify(activeUser) !== "{}") token = localStorage.getItem("token")
+
     const config = {
         "headers": {
-            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDA5ZTdjNjllNDNmNGUzNTRmYjQ5YiIsInVzZXJuYW1lIjoicmlzaHUiLCJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJpYXQiOjE3MDgyNzc3MzAsImV4cCI6MTcwODM2NDEzMH0.i-57p2_j7DgjT6FiYcEqlClbN1Xjo0jAs3NFKk0ITNg`,
+            authorization: `Bearer ${token} `,
         }
     }
 
@@ -33,7 +42,7 @@ const CreatePost = () => {
 
         try {
 
-            const resp = await api.post("/api/post/newPost", formData,config)
+            const resp = await api.post("/api/post/newPost", formData, config)
 
             console.log('file uploaded succesfully ', resp.data)
 
