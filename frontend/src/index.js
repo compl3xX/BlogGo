@@ -7,7 +7,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 
-import AuthContextProvider from "./context/AuthContext.js"
+import {AuthContextProvider} from "./context/AuthContext"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

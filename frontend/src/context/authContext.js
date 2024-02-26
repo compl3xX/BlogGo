@@ -4,7 +4,7 @@ import api from "../utilis/baseUrl";
 
 export const AuthContext = createContext();
 
-const AuthContextProvider = ({ children }) => {
+export const AuthContextProvider = ({ children }) => {
 
 
     const [activeUser, setActiveUser] = useState({})
@@ -41,6 +41,6 @@ const AuthContextProvider = ({ children }) => {
     )
 }
 
-export default AuthContextProvider
+//export default AuthContextProvider
 
 
