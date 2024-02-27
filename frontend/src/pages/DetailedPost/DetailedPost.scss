@@ -1,0 +1,29 @@
+.detailed_post_container {
+  margin-top: 5rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 5rem;
+}
+.detailed_post {
+  h2 {
+    font-size: xx-large;
+  }
+  img {
+    margin-top: 3rem;
+    height: 500px;
+    width: 100%;
+  }
+  p {
+    margin-top: 3rem;
+  }
+  div {
+    margin-top: 2rem;
+  }
+  width: 80rem;
+}
+
+.post_author {
+  display: flex;
+  justify-content: space-between;
+}

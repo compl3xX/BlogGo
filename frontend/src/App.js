@@ -22,7 +22,7 @@ function App() {
           />
           <Route path='/createpost' element={<CreatePost />} />
           <Route path='/userprofile' element={<UserProfile />} />
-          <Route path='/post/:id' element={<DetailedPost />} />
+          <Route path='/post/:slug' element={<DetailedPost />} />
         </Routes>
       </BrowserRouter>
     </div>
