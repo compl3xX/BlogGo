@@ -9,7 +9,11 @@ const Post = ({ post }) => {
 
     const navigate = useNavigate()
 
-    const sanitizedValue = DOMPurify.sanitize(post.content, { ALLOWED_TAGS: [] })
+    let content = DOMPurify.sanitize(post.content, { ALLOWED_TAGS: [] })
+
+    if (content.length > 300) {
+        content = content.slice(0, 300) + "..."
+    }
 
     const date = post.publishDate.substr(0, 10);
 
@@ -23,7 +27,7 @@ const Post = ({ post }) => {
             <img src={post.bannerImg} alt="post_img" />
             <div className="post_text">
                 <h2>{post.title}</h2>
-                <p>{sanitizedValue}</p>
+                <p>{content}</p>
                 <span>{date}</span>
             </div>
         </div>
