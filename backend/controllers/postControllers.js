@@ -71,4 +71,33 @@ const detailedPost = asyncHandler(async (req, res) => {
 
 })
 
-module.exports = { newPost, editPost, viewPosts, detailedPost }
+const postLiked = asyncHandler(async (req, res) => {
+
+    const { slug } = req.params;
+
+    const { id } = req.body;
+
+    const post = await postModel.findOne({ slug: slug })
+
+    const isPresent = post.usersLike.includes(id);
+
+    if (isPresent) {
+        const index = post.usersLike.indexOf(id);
+        post.usersLike.splice(index, 1)
+        console.log(post.usersLike)
+        post.likeCount = post.usersLike.length
+    }
+    else {
+        post.usersLike.push(id);
+        post.likeCount = post.usersLike.length 
+    }
+
+    await post.save()
+
+    return res.status(200).json({
+        success: true,
+        message: "likes updated"
+    })
+})
+
+module.exports = { newPost, editPost, viewPosts, detailedPost, postLiked }

@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './DetailedPost.scss'
 import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query";
 import api from "../../utilis/baseUrl";
 import parse from 'html-react-parser';
+import { AuthContext } from "../../context/AuthContext";
 
 const DetailedPost = () => {
 
     const { slug } = useParams();
+
+    const { activeUser } = useContext(AuthContext)
 
     const { data, isFetched } = useQuery({ queryKey: ['post'], queryFn: () => api.get(`/api/post/${slug}`) })
 
@@ -28,6 +31,7 @@ const DetailedPost = () => {
                         <img src={postDetail.bannerImg} />
                         <p>{parse(postDetail.content)}</p>
                     </section>
+                    <button onClick={async () => { await api.post(`/api/post/${slug}/like`, { id: activeUser._id }) }}>Like</button>
                 </div>
             </div> : <p>Loading...</p>
     )
