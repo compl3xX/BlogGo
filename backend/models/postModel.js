@@ -32,13 +32,14 @@ const postModel = mongoose.Schema({
     }],
 
     bannerImg: {
-        type:String,
-        require:[true,"Please provide a banner image"]
+        type: String,
+        require: [true, "Please provide a banner image"]
     },
 
-    usersLike: [{
-        type: String
-    }],
+    usersLike: {
+        type: [String], // Array of strings
+        default: []
+    },
 
     likeCount: {
         type: Number,

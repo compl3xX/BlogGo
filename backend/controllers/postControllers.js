@@ -21,7 +21,7 @@ const newPost = asyncHandler(async (req, res) => {
         title,
         content,
         author: req.user.id,
-        bannerImg:req.cldRes.url
+        bannerImg: req.cldRes.url
     })
 
     return res.status(200).json({
@@ -62,11 +62,18 @@ const detailedPost = asyncHandler(async (req, res) => {
 
     const { slug } = req.params;
 
+    const { id } = req.query;
+
     const post = await postModel.findOne({ slug: slug }).populate('author')
+
+    const isPresent = post.usersLike.includes(id);
+
 
     return res.status(200).json({
         success: true,
-        data: post
+        data: post,
+        userLiked: isPresent,
+
     })
 
 })
@@ -84,12 +91,11 @@ const postLiked = asyncHandler(async (req, res) => {
     if (isPresent) {
         const index = post.usersLike.indexOf(id);
         post.usersLike.splice(index, 1)
-        console.log(post.usersLike)
         post.likeCount = post.usersLike.length
     }
     else {
         post.usersLike.push(id);
-        post.likeCount = post.usersLike.length 
+        post.likeCount = post.usersLike.length
     }
 
     await post.save()

@@ -1,4 +1,4 @@
-button {
+.custom_btn {
   padding: 1px;
   font-size: 10px;
   text-align: center;
@@ -14,5 +14,16 @@ button {
   &:hover {
     background-color: #000000;
     color: white;
+  }
+}
+
+.icon_button {
+  border: none; /* Remove default button border */
+  background-color: transparent; /* Set background color to transparent */
+  padding: 0; /* Remove padding */
+  font-size: 24px;
+  color: black;
+  &:hover {
+    color: gray;
   }
 }

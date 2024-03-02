@@ -39,7 +39,7 @@ const CreatePost = () => {
         formData.append('image', selectedFile);
         formData.append('title', title);
         formData.append('content', content);
-
+        
         try {
 
             const resp = await api.post("/api/post/newPost", formData, config)

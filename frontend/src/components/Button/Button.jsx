@@ -3,7 +3,7 @@ import './Button.scss'
 
 const Button = ({ BntText, handel}) => {
     return (
-        <button onClick={handel}>{BntText}</button>
+        <button className="custom_btn" onClick={handel}>{BntText}</button>
     )
 }
 

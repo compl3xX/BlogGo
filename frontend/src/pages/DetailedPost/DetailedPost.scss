@@ -1,5 +1,5 @@
 .detailed_post_container {
-  margin-top: 5rem;
+  margin-top: 1rem;
   display: flex;
   width: 100%;
   justify-content: center;
@@ -26,4 +26,14 @@
 .post_author {
   display: flex;
   justify-content: space-between;
+}
+
+.post_likes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  .like_count {
+    font-size: medium;
+  }
 }
