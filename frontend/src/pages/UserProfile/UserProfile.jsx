@@ -25,8 +25,8 @@ const UserProfile = () => {
                     <p>Account Created<span>{new Date(userInfo.updatedAt).toDateString()}</span></p>
                 </div>
                 <div className="btn_container">
-                    <Button BntText="Edit Profile" />
-                    <Button BntText="Change Password" />
+                    <Button>Edit Profile</Button>
+                    <Button>Change Password</Button>
                 </div>
             </div>
 

@@ -44,9 +44,7 @@ const SignUp = () => {
                 onChange={e => setPassword(e.target.value)}
                 value={password} />
 
-            {/* <button onClick={registerUserHandler}></button> */}
-
-            <Button BntText="Register" handel={registerUserHandler} />
+            <Button handel={registerUserHandler} >Register</Button>
 
         </div>
     )

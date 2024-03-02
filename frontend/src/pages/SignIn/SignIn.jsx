@@ -56,7 +56,7 @@ const SignIn = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
                 />
-                <Button handel={signInHandler} BntText="Login" />
+                <Button handel={signInHandler} >Login</Button>
             </div>
         </div>
     )

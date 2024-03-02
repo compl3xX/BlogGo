@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { TextEditor } from "../../components"
+import { Button, TextEditor } from "../../components"
 import api from '../../utilis/baseUrl'
 import './CreatePost.scss'
 import { AuthContext } from "../../context/AuthContext"
@@ -39,7 +39,7 @@ const CreatePost = () => {
         formData.append('image', selectedFile);
         formData.append('title', title);
         formData.append('content', content);
-        
+
         try {
 
             const resp = await api.post("/api/post/newPost", formData, config)
@@ -63,7 +63,7 @@ const CreatePost = () => {
                 />
                 <TextEditor value={content} setValue={setContent} />
                 <input type="file" onChange={handleFileChange} />
-                <button type="submit">Create Post </button>
+                <Button type="submit" >Create Post</Button>
             </div>
         </form>
     )
