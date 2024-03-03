@@ -37,3 +37,10 @@
     font-size: medium;
   }
 }
+
+.likes_comments {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  align-items: center;
+}

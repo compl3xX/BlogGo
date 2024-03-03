@@ -1,14 +1,18 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import './DetailedPost.scss'
 import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query";
 import api from "../../utilis/baseUrl";
-import parse from 'html-react-parser';
 import { AuthContext } from "../../context/AuthContext";
 import { AiOutlineLike, AiFillLike } from "react-icons/ai";
+import { FaRegCommentAlt } from "react-icons/fa";
 import ReactQuill from "react-quill";
+import Comments from "../Comments/Comments";
 
 const DetailedPost = () => {
+
+
+    const [cmtOpen, setCmtOpen] = useState(false)
 
     const { slug } = useParams();
 
@@ -28,36 +32,43 @@ const DetailedPost = () => {
         refetch()
     }
 
+    console.log(postDetail)
+
 
     return (
         isFetchedAfterMount ?
-            <div className="detailed_post_container">
-                <div className="detailed_post">
-                    <h2>{postDetail?.title}</h2>
-                    <section>
-                        <div className="post_author">
-                            <span>Author: {postDetail?.author.username}</span>
-                            <span>{new Date(postDetail?.createdAt).toDateString()}</span>
-                        </div>
-                        <img src={postDetail?.bannerImg} />
-                        {/* <p>{parse(postDetail?.content)}</p> */}
-                        <p>
+            <>
+                {cmtOpen&&<Comments isOpen={cmtOpen} onClose={setCmtOpen} />}
+                < div className="detailed_post_container" >
+                    <div className="detailed_post">
+                        <h2>{postDetail?.title}</h2>
+                        <section>
+                            <div className="post_author">
+                                <span>Author: {postDetail?.author.username}</span>
+                                <span>{new Date(postDetail?.createdAt).toDateString()}</span>
+                            </div>
+                            <img src={postDetail?.bannerImg} />
+
                             <ReactQuill
                                 theme="bubble"
                                 value={postDetail?.content}
                                 readOnly={true}
                             >
                             </ReactQuill >
-                        </p>
-                    </section>
-                    <div>
-                        <div className="post_likes">
-                            <button className="icon_button" onClick={handelLike}>{userLiked ? <AiFillLike /> : <AiOutlineLike />}</button>
-                            <span className="like_count">{postDetail?.likeCount}</span>
+
+                        </section>
+                        <div className="likes_comments">
+                            <div className="post_likes">
+                                <button className="icon_button" onClick={handelLike}>{userLiked ? <AiFillLike /> : <AiOutlineLike />}</button>
+                                <span className="like_count">{postDetail?.likeCount}</span>
+                            </div>
+                            <div>
+                                <button className="icon_button" onClick={() => { setCmtOpen(prev => !prev) }}><FaRegCommentAlt /></button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div> : <p>Loading...</p>
+                </div >
+            </> : <p>Loading...</p>
     )
 }
 
