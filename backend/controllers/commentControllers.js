@@ -63,6 +63,18 @@ const newReply = asyncHandler(async (req, res) => {
 
 })
 
+const getReply = asyncHandler(async (req, res) => {
 
-module.exports = { newComment, newReply }
+    const { id } = req.body
+
+    const reply = await commentModel.findById(id).populate('childComments');
+
+    return res.status(200).json({
+        reply: reply.childComments
+    })
+
+})
+
+
+module.exports = { newComment, newReply, getReply }
 

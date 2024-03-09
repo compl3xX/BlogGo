@@ -64,7 +64,12 @@ const detailedPost = asyncHandler(async (req, res) => {
 
     const { id } = req.query;
 
-    const post = await postModel.findOne({ slug: slug }).populate('author')
+    const post = await postModel.findOne({ slug: slug }).populate('author').populate({
+        path: 'comments',
+        populate: {
+            path: 'author',
+        }
+    })
 
     const isPresent = post.usersLike.includes(id);
 

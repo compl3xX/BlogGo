@@ -6,7 +6,7 @@ const accessCheck = require('../middlewares/authMiddleware')
 
 const { newPost, editPost, viewPosts, detailedPost, postLiked } = require("../controllers/postControllers")
 
-const { newComment, newReply } = require("../controllers/commentControllers")
+const { newComment, newReply, getReply } = require("../controllers/commentControllers")
 
 const uploadMiddleware = require("../middlewares/multerMiddleware")
 
@@ -23,6 +23,10 @@ router.post('/:slug/like', postLiked)
 router.post('/:slug/newcomment', accessCheck, newComment)
 
 router.post('/:slug/comment/reply', accessCheck, newReply)
+
+router.get("/:slug/comment/reply", getReply)
+
+
 
 
 module.exports = router

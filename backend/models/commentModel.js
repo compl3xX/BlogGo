@@ -4,7 +4,9 @@ const commentModel = mongoose.Schema({
 
     commentPost: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'post'
+        required:true,
+        ref: 'post',
+        
     },
 
     content: {
